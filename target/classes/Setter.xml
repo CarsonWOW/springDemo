@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        <!--setter方法注入-->
+    <bean id="UserId" class="com.tcl.Setter.User">
+        <!--普通属性依赖注入
+        name:需注入的属性名
+        value:值-->
+        <property name="list">
+            <list>
+                <value>唱歌</value>
+                <value>跳舞</value>
+                <value>吃饭</value>
+            </list>
+        </property>
+        <!--name，id注入-->
+        <property name="name" value="张三"></property>
+        <property name="userId" value="3"></property>
+        <!--map属性注入，键值对的形式-->
+        <property name="map">
+            <map>
+                <entry key="gd" value="广东"></entry>
+                <entry key="gd1" value="东莞"></entry>
+            </map>
+        </property>
+        <!--数组属性注入-->
+        <property name="str">
+            <list>
+                <value>s1</value>
+                <value>s2</value>
+                <value>s3</value>
+            </list>
+        </property>
+        <!--注入对象-->
+        <property name="userVo" ref="UserVoid"></property>
+
+    </bean>
+    <!--Uservo对象注入-->
+    <!--创建对象-->
+    <bean id="UserVoid" class="com.tcl.Setter.UserVo">
+        <!--依赖Uservo属性-->
+        <property name="name" value="好人"></property>
+        <property name="userVoid" value="4"></property>
+    </bean>
+</beans>

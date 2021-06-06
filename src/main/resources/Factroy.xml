@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--静态工厂,用于生成实例对象,所有方法都不是静态方法-->
+    <!--创建实例工厂-->
+    <bean id="MyFactory" class="com.tcl.MyFactory.MyFactory"></bean>
+    <!--通过实例工厂获得对象，获得实例
+    factory-bean:实例工厂类名
+    factory-method:方法名-->
+    <!--多例,单例
+    单例:在spring中,默认为单利，都是同一个对象,一个地址
+    多例:在bean中加上作用域，每创建一个对象,系统自动创建多个不同对象,都指向不同的地址-->
+    <bean id="ServiceId" factory-bean="MyFactory" factory-method="CreatedUserService" scope="prototype"></bean>
+</beans>

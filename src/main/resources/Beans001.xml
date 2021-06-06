@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--配置业务层,调用Dao层,依赖Dao层-->
+    <bean id="UserDaoId" class="com.tcl.Day01di_all.UserDaoImpl"></bean>
+    <bean id="UserServiceId" class="com.tcl.Day01di_all.UserServiceImpl">
+        <property name="userDao" ref="UserDaoId"></property>
+    </bean>
+
+    <!--配置控制层,调用业务层,依赖业务层,业务层依赖Dao层-->
+    <!--Dao层-->
+    <bean id="UserDaoId01" class="com.tcl.Day01di_all.UserDaoImpl"></bean>
+
+    <bean id="UserServiceId01" class="com.tcl.Day01di_all.UserServiceImpl">
+        <property name="userDao" ref="UserDaoId01"></property>
+    </bean>
+    <bean id="UserAction" class="com.tcl.Day01di_all.Action">
+        <property name="userService" ref="UserServiceId01"></property>
+    </bean>
+
+</beans>
